@@ -54,7 +54,8 @@ public class CartDao {
 	         		"WHERE\r\n" + 
 	         		"    a.no = b.no AND b.no = c.no\r\n" + 
 	         		"        AND c.no = e.book_no\r\n" + 
-	         		"        AND d.no = e.customer_no"; 
+	         		"        AND d.no = e.customer_no\r\n" + 
+	         		"group by a.no"; 
 	         
 	         rs = stmt.executeQuery(sql);
 

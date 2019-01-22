@@ -1,5 +1,9 @@
 package com.douzone.bookmall.vo;
 
+import java.util.List;
+
+import com.douzone.bookmall.dao.CartDao;
+
 public class CartVo{
 	
 	public CartVo() {}
@@ -66,6 +70,20 @@ public class CartVo{
 	}
 	@Override
 	public String toString() {
-		return "cartVo [no=" + no + ", customer_no=" + customer_no + ", book_no=" + book_no + ", count=" + count + "]";
+		
+		CartDao c = new CartDao();
+		
+		System.out.println("======================카트리스트=======================");
+	      List<CartVo> list = c.getCartList();
+	      for (CartVo vo : list) {
+	         System.out.println("제목:"+ vo.getTitle() + 
+	        		  		  ", 수량:" + vo.getCount() + 
+	        		  		  ", 가격:" + vo.getPrice() + 
+	        		  		  ", 고객:" + vo.getName());
+	      }
+
+		     System.out.println("");
+				
+		return null;
 	}	
 }

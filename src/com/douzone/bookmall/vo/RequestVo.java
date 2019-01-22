@@ -1,5 +1,9 @@
 package com.douzone.bookmall.vo;
 
+import java.util.List;
+
+import com.douzone.bookmall.dao.RequestDao;
+
 public class RequestVo {
 	
 	public RequestVo() {}
@@ -44,7 +48,22 @@ public class RequestVo {
 	}
 	@Override
 	public String toString() {
-		return "requestVo [no=" + no + ", customer_no=" + customer_no + "]";
+		
+	RequestDao r = new RequestDao();
+		
+		System.out.println("======================주문리스트=======================");
+	      List<RequestVo> list = r.orderList();
+	      for (RequestVo vo : list) {
+	         System.out.println("주문번호:"+ vo.getNo() + 
+	        		  		  ", 이름:" + vo.getName() + 
+	        		  		  ", 이메일:" + vo.getEmail() + 
+	        		  		  ", 총주문가격:" + vo.getSumprice() +
+	        		  		  ", 배송지:" + vo.getShipping());
+	      }
+
+		     System.out.println("");
+		
+		return null;
 	}
 	public int getNo() {
 		return no;

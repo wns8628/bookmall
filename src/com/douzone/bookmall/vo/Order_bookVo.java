@@ -1,5 +1,9 @@
 package com.douzone.bookmall.vo;
 
+import java.util.List;
+
+import com.douzone.bookmall.dao.Order_bookDao;
+
 public class Order_bookVo {
 	
 	public Order_bookVo() {}
@@ -30,7 +34,20 @@ public class Order_bookVo {
 	}
 	@Override
 	public String toString() {
-		return "order_bookVo [no=" + no + ", book_no=" + book_no + "]";
+		
+		Order_bookDao o = new Order_bookDao();
+		
+		System.out.println("======================지금까지 주문된 책 리스트=======================");
+	      List<Order_bookVo> list = o.orderSellBookList();
+	      for (Order_bookVo vo : list) {
+	         System.out.println("책 번호:"+ vo.getBook_no() + 
+	        		  		  ", 책 이름:" + vo.getTitle() + 
+	        		  		  ", 총 판매권수:" + vo.getSumCount()
+	        		  		  );
+	      }
+		System.out.println("");
+		
+		return null;		
 	}
 	public int getNo() {
 		return no;

@@ -1,5 +1,9 @@
 package com.douzone.bookmall.vo;
 
+import java.util.List;
+
+import com.douzone.bookmall.dao.CustomerDao;
+
 public class CustomerVo {
    private long no;
    private String name;
@@ -61,8 +65,20 @@ public void setPassword(String password) {
 }
 @Override
 public String toString() {
-	return "CustomerVo [no=" + no + ", name=" + name + ", phone=" + phone + ", email=" + email + ", shipping="
-			+ shipping + ", password=" + password + "]";
+	
+	CustomerDao c = new CustomerDao();
+	
+	System.out.println("======================회원리스트=======================");
+      List<CustomerVo> list = c.getList();
+      for (CustomerVo vo : list) {
+         System.out.println("이름:" + vo.getName() +
+        		 		    ", 번호:" + vo.getPhone() + 
+        		 		     ", 이메일 :" + vo.getEmail() + 
+        		 		     ", 패스워드:" + vo.getPassword());
+      }
+     System.out.println("");
+     
+	return null;
 }
  
    

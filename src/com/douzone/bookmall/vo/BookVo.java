@@ -1,5 +1,9 @@
 package com.douzone.bookmall.vo;
 
+import java.util.List;
+
+import com.douzone.bookmall.dao.BookDao;
+
 public class BookVo {
 
 	
@@ -27,7 +31,20 @@ public class BookVo {
 	}
 	@Override
 	public String toString() {
-		return "bookVo [no=" + no + ", title=" + title + ", price=" + price + ", category_no=" + category_no + "]";
+
+		BookDao b = new BookDao();
+		
+		System.out.println("======================상품리스트=======================");
+	      List<BookVo> list = b.getbookList();
+	      for (BookVo vo : list) {
+	         System.out.println("제목:"+ vo.getTitle() +
+	        		 		  ", 장르:" + vo.getCategory() +
+	        		  		  ", 가격" + vo.getPrice());
+	      }
+
+		     System.out.println("");
+		    
+		return null;
 	}
 	
 	public int getNo() {
